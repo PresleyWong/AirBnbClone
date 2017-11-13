@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  headcount: MyString
+  total_price: MyString
+  confirmation: MyString
+  user: one
+  place: one
+
+two:
+  headcount: MyString
+  total_price: MyString
+  confirmation: MyString
+  user: two
+  place: two

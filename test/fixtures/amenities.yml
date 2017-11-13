@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kitchen: MyString
+  internet: MyString
+  tv: MyString
+  cable_tv: MyString
+  internet: MyString
+  washer: MyString
+  gym: MyString
+  handicap_accessible: MyString
+  smoking_allowed: MyString
+  indoor_fireplace: MyString
+  air_conditiong: MyString
+  heating: MyString
+  dryer: MyString
+  place: one
+
+two:
+  kitchen: MyString
+  internet: MyString
+  tv: MyString
+  cable_tv: MyString
+  internet: MyString
+  washer: MyString
+  gym: MyString
+  handicap_accessible: MyString
+  smoking_allowed: MyString
+  indoor_fireplace: MyString
+  air_conditiong: MyString
+  heating: MyString
+  dryer: MyString
+  place: two

@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Amenities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Kitchen</th>
+      <th>Internet</th>
+      <th>Tv</th>
+      <th>Cable tv</th>
+      <th>Internet</th>
+      <th>Washer</th>
+      <th>Gym</th>
+      <th>Handicap accessible</th>
+      <th>Smoking allowed</th>
+      <th>Indoor fireplace</th>
+      <th>Air conditiong</th>
+      <th>Heating</th>
+      <th>Dryer</th>
+      <th>Place</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @amenities.each do |amenity| %>
+      <tr>
+        <td><%= amenity.kitchen %></td>
+        <td><%= amenity.internet %></td>
+        <td><%= amenity.tv %></td>
+        <td><%= amenity.cable_tv %></td>
+        <td><%= amenity.internet %></td>
+        <td><%= amenity.washer %></td>
+        <td><%= amenity.gym %></td>
+        <td><%= amenity.handicap_accessible %></td>
+        <td><%= amenity.smoking_allowed %></td>
+        <td><%= amenity.indoor_fireplace %></td>
+        <td><%= amenity.air_conditiong %></td>
+        <td><%= amenity.heating %></td>
+        <td><%= amenity.dryer %></td>
+        <td><%= amenity.place %></td>
+        <td><%= link_to 'Show', amenity %></td>
+        <td><%= link_to 'Edit', edit_amenity_path(amenity) %></td>
+        <td><%= link_to 'Destroy', amenity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Amenity', new_amenity_path %>

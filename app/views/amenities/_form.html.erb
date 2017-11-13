@@ -1,0 +1,87 @@
+<%= form_for(amenity) do |f| %>
+  <% if amenity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(amenity.errors.count, "error") %> prohibited this amenity from being saved:</h2>
+
+      <ul>
+      <% amenity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :kitchen %>
+    <%= f.text_field :kitchen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :internet %>
+    <%= f.text_field :internet %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tv %>
+    <%= f.text_field :tv %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cable_tv %>
+    <%= f.text_field :cable_tv %>
+  </div>
+
+  <div class="field">
+    <%= f.label :internet %>
+    <%= f.text_field :internet %>
+  </div>
+
+  <div class="field">
+    <%= f.label :washer %>
+    <%= f.text_field :washer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gym %>
+    <%= f.text_field :gym %>
+  </div>
+
+  <div class="field">
+    <%= f.label :handicap_accessible %>
+    <%= f.text_field :handicap_accessible %>
+  </div>
+
+  <div class="field">
+    <%= f.label :smoking_allowed %>
+    <%= f.text_field :smoking_allowed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :indoor_fireplace %>
+    <%= f.text_field :indoor_fireplace %>
+  </div>
+
+  <div class="field">
+    <%= f.label :air_conditiong %>
+    <%= f.text_field :air_conditiong %>
+  </div>
+
+  <div class="field">
+    <%= f.label :heating %>
+    <%= f.text_field :heating %>
+  </div>
+
+  <div class="field">
+    <%= f.label :dryer %>
+    <%= f.text_field :dryer %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place_id %>
+    <%= f.text_field :place_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Headcount:</strong>
+  <%= @booking.headcount %>
+</p>
+
+<p>
+  <strong>Total price:</strong>
+  <%= @booking.total_price %>
+</p>
+
+<p>
+  <strong>Confirmation:</strong>
+  <%= @booking.confirmation %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @booking.user %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @booking.place %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>
