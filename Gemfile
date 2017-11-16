@@ -48,7 +48,9 @@ gem 'delayed_job_web'
 gem 'daemons'
 
 gem 'friendly_id', '~> 5.1.0'
+gem "administrate"
 
+gem 'faker'
 
 
 group :development, :test do

@@ -14,7 +14,7 @@ class CreateAmenities < ActiveRecord::Migration[5.0]
       t.boolean :air_conditiong
       t.boolean :heating
       t.boolean :dryer
-      t.references :place, foreign_key: true
+      t.references :place, index: true, foreign_key: true
 
       t.timestamps
     end

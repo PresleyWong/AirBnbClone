@@ -37,11 +37,13 @@ ActiveRecord::Schema.define(version: 20171110065954) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "headcount"
     t.decimal  "total_price"
-    t.boolean  "confirmation"
+    t.date     "check_in_date"
+    t.date     "check_out_date"
+    t.boolean  "confirmation",   default: false
     t.integer  "user_id"
     t.integer  "place_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.index ["place_id"], name: "index_bookings_on_place_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -51,15 +53,17 @@ ActiveRecord::Schema.define(version: 20171110065954) do
     t.string   "listing_image"
     t.string   "description"
     t.string   "address"
+    t.integer  "postcode"
+    t.string   "city"
+    t.string   "country"
     t.decimal  "price"
     t.integer  "max_guest"
     t.integer  "number_rooms"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["user_id"], name: "index_places_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -96,7 +100,6 @@ ActiveRecord::Schema.define(version: 20171110065954) do
   add_foreign_key "amenities", "places"
   add_foreign_key "bookings", "places"
   add_foreign_key "bookings", "users"
-  add_foreign_key "places", "users"
   add_foreign_key "reviews", "places"
   add_foreign_key "reviews", "users"
 end
