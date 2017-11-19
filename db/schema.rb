@@ -16,26 +16,37 @@ ActiveRecord::Schema.define(version: 20171110065954) do
   enable_extension "plpgsql"
 
   create_table "amenities", force: :cascade do |t|
-    t.boolean  "kitchen"
-    t.boolean  "internet"
-    t.boolean  "tv"
-    t.boolean  "cable_tv"
-    t.boolean  "washer"
-    t.boolean  "gym"
-    t.boolean  "handicap_accessible"
-    t.boolean  "smoking_allowed"
-    t.boolean  "indoor_fireplace"
-    t.boolean  "air_conditiong"
-    t.boolean  "heating"
-    t.boolean  "dryer"
+    t.boolean  "air_conditiong",           default: false
+    t.boolean  "cable_tv",                 default: false
+    t.boolean  "carbon_monoxide_detector", default: false
+    t.boolean  "dryer",                    default: false
+    t.boolean  "elevator",                 default: false
+    t.boolean  "essentials",               default: false
+    t.boolean  "family_friendly",          default: false
+    t.boolean  "first_aid_kit",            default: false
+    t.boolean  "gym",                      default: false
+    t.boolean  "handicap_accessible",      default: false
+    t.boolean  "heating",                  default: false
+    t.boolean  "hot_tub",                  default: false
+    t.boolean  "indoor_fireplace",         default: false
+    t.boolean  "internet",                 default: false
+    t.boolean  "kitchen",                  default: false
+    t.boolean  "pets_allowed",             default: false
+    t.boolean  "pool",                     default: false
+    t.boolean  "shampoo",                  default: false
+    t.boolean  "smoke_detector",           default: false
+    t.boolean  "smoking_allowed",          default: false
+    t.boolean  "tv",                       default: false
+    t.boolean  "washer",                   default: false
+    t.boolean  "wireless_internet",        default: false
     t.integer  "place_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.index ["place_id"], name: "index_amenities_on_place_id", using: :btree
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "headcount"
+    t.integer  "num_guest"
     t.decimal  "total_price"
     t.date     "check_in_date"
     t.date     "check_out_date"
@@ -58,7 +69,9 @@ ActiveRecord::Schema.define(version: 20171110065954) do
     t.string   "country"
     t.decimal  "price"
     t.integer  "max_guest"
-    t.integer  "number_rooms"
+    t.integer  "num_rooms"
+    t.integer  "num_beds"
+    t.integer  "num_baths"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "owner_id"

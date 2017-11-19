@@ -10,7 +10,9 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.string :country
       t.decimal  :price
       t.integer :max_guest
-      t.integer :number_rooms
+      t.integer :num_rooms
+      t.integer :num_beds
+      t.integer :num_baths
       t.float  :latitude
       t.float  :longitude
       t.integer :owner_id  

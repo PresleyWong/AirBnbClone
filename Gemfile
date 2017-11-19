@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 gem 'devise'
 
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem 'cloudinary'
+
 
 #frontend
 gem 'twitter-bootstrap-rails'

@@ -10,7 +10,9 @@ class PlaceDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     amenity: Field::HasOne,
+    reviews: Field::HasMany,
     bookings: Field::HasMany,
+    users: Field::HasMany,
     id: Field::Number,
     listing_title: Field::String,
     listing_image: Field::String,
@@ -21,7 +23,9 @@ class PlaceDashboard < Administrate::BaseDashboard
     country: Field::String,
     price: Field::String.with_options(searchable: false),
     max_guest: Field::Number,
-    number_rooms: Field::Number,
+    num_rooms: Field::Number,
+    num_beds: Field::Number,
+    num_baths: Field::Number,
     latitude: Field::Number.with_options(decimals: 2),
     longitude: Field::Number.with_options(decimals: 2),
     owner_id: Field::Number,
@@ -37,8 +41,8 @@ class PlaceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :user,
     :amenity,
+    :reviews,
     :bookings,
-    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -46,7 +50,9 @@ class PlaceDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :amenity,
+    :reviews,
     :bookings,
+    :users,
     :id,
     :listing_title,
     :listing_image,
@@ -57,7 +63,9 @@ class PlaceDashboard < Administrate::BaseDashboard
     :country,
     :price,
     :max_guest,
-    :number_rooms,
+    :num_rooms,
+    :num_beds,
+    :num_baths,
     :latitude,
     :longitude,
     :owner_id,
@@ -71,7 +79,9 @@ class PlaceDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :user,
     :amenity,
+    :reviews,
     :bookings,
+    :users,
     :listing_title,
     :listing_image,
     :description,
@@ -81,7 +91,9 @@ class PlaceDashboard < Administrate::BaseDashboard
     :country,
     :price,
     :max_guest,
-    :number_rooms,
+    :num_rooms,
+    :num_beds,
+    :num_baths,
     :latitude,
     :longitude,
     :owner_id,

@@ -11,7 +11,8 @@ class BookingDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     place: Field::BelongsTo,
     id: Field::Number,
-    headcount: Field::Number,
+    num_adult: Field::Number,
+    num_child: Field::Number,
     total_price: Field::String.with_options(searchable: false),
     check_in_date: Field::DateTime,
     check_out_date: Field::DateTime,
@@ -29,7 +30,7 @@ class BookingDashboard < Administrate::BaseDashboard
     :user,
     :place,
     :id,
-    :headcount,
+    :num_adult,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +39,8 @@ class BookingDashboard < Administrate::BaseDashboard
     :user,
     :place,
     :id,
-    :headcount,
+    :num_adult,
+    :num_child,
     :total_price,
     :check_in_date,
     :check_out_date,
@@ -53,7 +55,8 @@ class BookingDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :user,
     :place,
-    :headcount,
+    :num_adult,
+    :num_child,
     :total_price,
     :check_in_date,
     :check_out_date,

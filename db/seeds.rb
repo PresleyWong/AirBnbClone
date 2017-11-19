@@ -18,35 +18,47 @@
 	)	
 	
 	place = Place.create(
-		listing_title: Faker::Lorem.paragraph(1),
-		listing_image: Faker::LoremPixel.image("300x200", false, 'city'),
-		description: Faker::Lorem.paragraph(2),
-	    address: Faker::Address.building_number + Faker::Address.street_name + Faker::Address.street_address,
-	    postcode: Faker::Address.postcode,
-        city: Faker::Address.city_prefix,
-        country: Faker::Address.country,
-	    price: rand(200..1000),
-	    max_guest: rand(2..6),
-	    number_rooms: rand(2..6),
-	    latitude: Faker::Address.latitude, 
-	    longitude: Faker::Address.latitude,
-	    owner_id: user.id
+	  listing_title: Faker::Lorem.paragraph(1),
+	  listing_image: Faker::LoremPixel.image("300x200", false, 'city'),
+	  description: Faker::Lorem.paragraph(2),
+	  address: Faker::Address.building_number + Faker::Address.street_name + Faker::Address.street_address,
+	  postcode: Faker::Address.postcode,
+	  city: Faker::Address.city_prefix,
+	  country: Faker::Address.country,
+	  price: rand(200..1000),
+	  max_guest: rand(2..6),
+	  num_rooms: rand(2..6),
+	  num_beds: rand(2..6),
+	  num_baths: rand(1..3),
+	  latitude: Faker::Address.latitude, 
+	  longitude: Faker::Address.longitude,
+	  owner_id: user.id
 	)		
 	
 	place.create_amenity(
-        kitchen: [true, false].sample,
-        internet: [true, false].sample,
-        tv: [true, false].sample,
-        cable_tv: [true, false].sample,
-        internet: [true, false].sample,
-        washer: [true, false].sample,
-        gym: [true, false].sample,
-        handicap_accessible: [true, false].sample,
-        smoking_allowed: [true, false].sample,
-        indoor_fireplace: [true, false].sample,
-        air_conditiong: [true, false].sample,
-        heating: [true, false].sample,
-        dryer: [true, false].sample
+		air_conditiong: [true, false].sample,
+		cable_tv: [true, false].sample,
+		carbon_monoxide_detector: [true, false].sample,
+		dryer: [true, false].sample,
+		elevator: [true, false].sample,
+		essentials: [true, false].sample,
+		family_friendly: [true, false].sample,
+		first_aid_kit: [true, false].sample,
+		gym: [true, false].sample,
+		handicap_accessible: [true, false].sample,
+		heating: [true, false].sample,
+		hot_tub: [true, false].sample,
+		indoor_fireplace: [true, false].sample, 
+		internet: [true, false].sample,
+		kitchen: [true, false].sample,
+		pets_allowed: [true, false].sample,
+		pool: [true, false].sample,
+		shampoo: [true, false].sample,
+		smoke_detector: [true, false].sample,
+		smoking_allowed: [true, false].sample,
+		tv: [true, false].sample,
+		washer: [true, false].sample,
+		wireless_internet: [true, false].sample
 	)	
 end
 
@@ -59,13 +71,13 @@ end
 	)
 
 	Booking.create(
-        headcount: rand(2..6),
-     	total_price: rand(200..1000),
-      	check_in_date: Faker::Date.between(100.days.ago, 80.days.ago),
-     	check_out_date: Faker::Date.between(70.days.ago, 50.days.ago),
-     	confirmation: true,
-      	user_id: rand(1..50),
-      	place_id: rand(1..50)    
+		num_guest: rand(1..6),
+		total_price: rand(200..1000),
+		check_in_date: Faker::Date.between(100.days.ago, 80.days.ago),
+		check_out_date: Faker::Date.between(70.days.ago, 50.days.ago),
+		confirmation: true,
+		user_id: rand(1..50),
+		place_id: rand(1..50)    
 	)
 end
 

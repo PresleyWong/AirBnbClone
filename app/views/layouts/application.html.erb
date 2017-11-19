@@ -1,17 +1,136 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AirBnb</title>
+    <title>Vacation Rentals, Homes, Experiences &amp; Places - Cloudbnb</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+   
+    
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-placeholder/2.3.1/jquery.placeholder.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+    
+    <script src="http://mariusn.com/themes/reales/js/infobox.js"></script>
+    <script src="http://mariusn.com/themes/reales/js/jquery.visible.js"></script>
+    <script src="http://mariusn.com/themes/reales/js/home.js"></script>
+
+    
+    <link href="//t1m0n.name/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="//t1m0n.name/air-datepicker/dist/js/datepicker.min.js"></script>
+    <script src="//t1m0n.name/air-datepicker/dist/js/i18n/datepicker.en.js"></script>
+
+
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<!--     <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
 
     <%= yield %>
+
+    <div class="home-footer">
+    <div class="home-wrapper">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="osLight footer-header">
+                    Company
+                </div>
+                <ul class="footer-nav pb20">
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">About</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Jobs</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Press</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/blog.html">Blog</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Help</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Policies</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Terms &amp; Privacy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                <div class="osLight footer-header">
+                    Discover
+                </div>
+                <ul class="footer-nav pb20">
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Become a Member</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Properties List</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Sign In</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Widgets</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Components</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Tables</a>
+                    </li>
+                    <li>
+                        <a href="http://mariusn.com/themes/reales/#">Lists</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="osLight footer-header">
+                    Get in Touch
+                </div>
+                <ul class="footer-nav pb20">
+                    <li class="footer-phone"><span class="fa fa-phone"></span> 800 234 67 89</li>
+                    <li class="footer-address osLight">
+                        <p>516 Green St</p>
+                        <p>San Francisco, CA 94133</p>
+                        <p>United States</p>
+                    </li>
+                    <li>
+                        <a class="btn btn-sm btn-icon btn-round btn-o btn-white" href="http://mariusn.com/themes/reales/#"><span class="fa fa-facebook"></span></a> <a class="btn btn-sm btn-icon btn-round btn-o btn-white" href="http://mariusn.com/themes/reales/#"><span class="fa fa-twitter"></span></a> <a class="btn btn-sm btn-icon btn-round btn-o btn-white" href="http://mariusn.com/themes/reales/#"><span class="fa fa-google-plus"></span></a> <a class="btn btn-sm btn-icon btn-round btn-o btn-white" href="http://mariusn.com/themes/reales/#"><span class="fa fa-linkedin"></span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                <div class="osLight footer-header">
+                    Subscribe to Our Newsletter
+                </div>
+                <form role="form">
+                    <div class="form-group">
+                        <input class="form-control" placeholder="Email Address" type="email">
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-green btn-block isThemeBtn" href="http://mariusn.com/themes/reales/#">Subscribe</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">Cloudbnb ©<%=Date.today.year%></div>
+    </div>
+
   </body>
 </html>
