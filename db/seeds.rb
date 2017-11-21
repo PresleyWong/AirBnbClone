@@ -74,8 +74,7 @@ end
 		num_guest: rand(1..6),
 		total_price: rand(200..1000),
 		check_in_date: Faker::Date.between(100.days.ago, 80.days.ago),
-		check_out_date: Faker::Date.between(70.days.ago, 50.days.ago),
-		confirmation: true,
+		check_out_date: Faker::Date.between(70.days.ago, 50.days.ago),		
 		user_id: rand(1..50),
 		place_id: rand(1..50)    
 	)

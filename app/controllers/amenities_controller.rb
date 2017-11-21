@@ -1,4 +1,5 @@
 class AmenitiesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_amenity, only: [:show, :edit, :update, :destroy]
 
   # GET /amenities
@@ -69,6 +70,32 @@ class AmenitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def amenity_params
-      params.require(:amenity).permit(:kitchen, :internet, :tv, :cable_tv, :internet, :washer, :gym, :handicap_accessible, :smoking_allowed, :indoor_fireplace, :air_conditiong, :heating, :dryer, :place_id)
+      params.require(:amenity).permit(
+              :air_conditiong, 
+              :cable_tv, 
+              :carbon_monoxide_detector, 
+              :dryer, 
+              :elevator, 
+              :essentials, 
+              :family_friendly, 
+              :first_aid_kit, 
+              :gym, 
+              :handicap_accessible, 
+              :heating, 
+              :hot_tub, 
+              :indoor_fireplace, 
+              :internet, 
+              :kitchen, 
+              :pets_allowed, 
+              :pool, 
+              :shampoo, 
+              :smoke_detector, 
+              :smoking_allowed, 
+              :tv, 
+              :washer, 
+              :wireless_internet)
     end
 end
+
+
+

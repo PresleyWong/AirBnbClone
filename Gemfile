@@ -55,6 +55,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem "administrate"
 
 gem 'faker'
+gem 'braintree'
 
 
 group :development, :test do

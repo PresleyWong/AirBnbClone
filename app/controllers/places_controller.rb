@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_place, only: [:show, :edit, :update, :destroy]
 
   # GET /places
@@ -69,6 +70,26 @@ class PlacesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:listing_title, :listing_image, :description, :address, :price, :max_guest, :number_rooms, :latitude, :longitude, :user_id)
+      params.require(:place).permit(
+        :listing_title, 
+        :listing_image, 
+        :description, 
+        :address, 
+        :postcode,
+        :city,
+        :country,
+        :price, 
+        :max_guest, 
+        :num_rooms, 
+        :num_beds,
+        :num_baths,
+        :latitude, 
+        :longitude, 
+        :user_id)
     end
 end
+
+
+
+
+  

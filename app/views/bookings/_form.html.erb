@@ -1,42 +1,69 @@
-<%= form_for(booking) do |f| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+<%= form_for @booking, :html => { :class => "form-horizontal booking" } do |f| %>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @booking.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @booking.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :headcount %>
-    <%= f.text_field :headcount %>
+  <div class="form-group">
+    <%= f.label :num_guest, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :num_guest, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:num_guest) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :total_price, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :total_price, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:total_price) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :check_in_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :check_in_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:check_in_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :check_out_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :check_out_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:check_out_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :user_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:user_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :place_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :place_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:place_id) %>
   </div>
 
-  <div class="field">
-    <%= f.label :total_price %>
-    <%= f.text_field :total_price %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                bookings_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :confirmation %>
-    <%= f.text_field :confirmation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :place_id %>
-    <%= f.text_field :place_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

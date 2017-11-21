@@ -1,53 +1,84 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Amenities</h1>
-
-<table>
+<%- model_class = Amenity -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Kitchen</th>
-      <th>Internet</th>
-      <th>Tv</th>
-      <th>Cable tv</th>
-      <th>Internet</th>
-      <th>Washer</th>
-      <th>Gym</th>
-      <th>Handicap accessible</th>
-      <th>Smoking allowed</th>
-      <th>Indoor fireplace</th>
-      <th>Air conditiong</th>
-      <th>Heating</th>
-      <th>Dryer</th>
-      <th>Place</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:air_conditiong) %></th>
+      <th><%= model_class.human_attribute_name(:cable_tv) %></th>
+      <th><%= model_class.human_attribute_name(:carbon_monoxide_detector) %></th>
+      <th><%= model_class.human_attribute_name(:dryer) %></th>
+      <th><%= model_class.human_attribute_name(:elevator) %></th>
+      <th><%= model_class.human_attribute_name(:essentials) %></th>
+      <th><%= model_class.human_attribute_name(:family_friendly) %></th>
+      <th><%= model_class.human_attribute_name(:first_aid_kit) %></th>
+      <th><%= model_class.human_attribute_name(:gym) %></th>
+      <th><%= model_class.human_attribute_name(:handicap_accessible) %></th>
+      <th><%= model_class.human_attribute_name(:heating) %></th>
+      <th><%= model_class.human_attribute_name(:hot_tub) %></th>
+      <th><%= model_class.human_attribute_name(:indoor_fireplace) %></th>
+      <th><%= model_class.human_attribute_name(:internet) %></th>
+      <th><%= model_class.human_attribute_name(:kitchen) %></th>
+      <th><%= model_class.human_attribute_name(:pets_allowed) %></th>
+      <th><%= model_class.human_attribute_name(:pool) %></th>
+      <th><%= model_class.human_attribute_name(:shampoo) %></th>
+      <th><%= model_class.human_attribute_name(:smoke_detector) %></th>
+      <th><%= model_class.human_attribute_name(:smoking_allowed) %></th>
+      <th><%= model_class.human_attribute_name(:tv) %></th>
+      <th><%= model_class.human_attribute_name(:washer) %></th>
+      <th><%= model_class.human_attribute_name(:wireless_internet) %></th>
+      <th><%= model_class.human_attribute_name(:place_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @amenities.each do |amenity| %>
       <tr>
-        <td><%= amenity.kitchen %></td>
-        <td><%= amenity.internet %></td>
-        <td><%= amenity.tv %></td>
+        <td><%= link_to amenity.id, amenity_path(amenity) %></td>
+        <td><%= amenity.air_conditiong %></td>
         <td><%= amenity.cable_tv %></td>
-        <td><%= amenity.internet %></td>
-        <td><%= amenity.washer %></td>
+        <td><%= amenity.carbon_monoxide_detector %></td>
+        <td><%= amenity.dryer %></td>
+        <td><%= amenity.elevator %></td>
+        <td><%= amenity.essentials %></td>
+        <td><%= amenity.family_friendly %></td>
+        <td><%= amenity.first_aid_kit %></td>
         <td><%= amenity.gym %></td>
         <td><%= amenity.handicap_accessible %></td>
-        <td><%= amenity.smoking_allowed %></td>
-        <td><%= amenity.indoor_fireplace %></td>
-        <td><%= amenity.air_conditiong %></td>
         <td><%= amenity.heating %></td>
-        <td><%= amenity.dryer %></td>
-        <td><%= amenity.place %></td>
-        <td><%= link_to 'Show', amenity %></td>
-        <td><%= link_to 'Edit', edit_amenity_path(amenity) %></td>
-        <td><%= link_to 'Destroy', amenity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= amenity.hot_tub %></td>
+        <td><%= amenity.indoor_fireplace %></td>
+        <td><%= amenity.internet %></td>
+        <td><%= amenity.kitchen %></td>
+        <td><%= amenity.pets_allowed %></td>
+        <td><%= amenity.pool %></td>
+        <td><%= amenity.shampoo %></td>
+        <td><%= amenity.smoke_detector %></td>
+        <td><%= amenity.smoking_allowed %></td>
+        <td><%= amenity.tv %></td>
+        <td><%= amenity.washer %></td>
+        <td><%= amenity.wireless_internet %></td>
+        <td><%= amenity.place_id %></td>
+        <td><%=l amenity.created_at %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      amenity_path(amenity), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_amenity_path(amenity), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      amenity_path(amenity),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Amenity', new_amenity_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_amenity_path,
+            :class => 'btn btn-primary' %>

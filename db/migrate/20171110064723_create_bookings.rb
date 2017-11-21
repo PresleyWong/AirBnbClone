@@ -5,7 +5,7 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.decimal :total_price
       t.date :check_in_date
       t.date :check_out_date
-      t.boolean :confirmation, default: false
+  
       t.references :user, index: true, foreign_key: true
       t.references :place, index: true, foreign_key: true
 

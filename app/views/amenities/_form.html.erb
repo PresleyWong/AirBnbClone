@@ -1,87 +1,195 @@
-<%= form_for(amenity) do |f| %>
-  <% if amenity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(amenity.errors.count, "error") %> prohibited this amenity from being saved:</h2>
+<%= form_for @amenity, :html => { :class => "form-horizontal amenity" } do |f| %>
 
-      <ul>
-      <% amenity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @amenity.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@amenity.errors.count, "error") %> prohibited this amenity from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @amenity.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :kitchen %>
-    <%= f.text_field :kitchen %>
+  <div class="form-group">
+    <%= f.label :air_conditiong, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :air_conditiong, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:air_conditiong) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cable_tv, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :cable_tv, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:cable_tv) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :carbon_monoxide_detector, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :carbon_monoxide_detector, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:carbon_monoxide_detector) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :dryer, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :dryer, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:dryer) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :elevator, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :elevator, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:elevator) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :essentials, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :essentials, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:essentials) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :family_friendly, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :family_friendly, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:family_friendly) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :first_aid_kit, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :first_aid_kit, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:first_aid_kit) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gym, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :gym, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:gym) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :handicap_accessible, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :handicap_accessible, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:handicap_accessible) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :heating, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :heating, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:heating) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hot_tub, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hot_tub, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hot_tub) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :indoor_fireplace, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :indoor_fireplace, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:indoor_fireplace) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :internet, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :internet, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:internet) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kitchen, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :kitchen, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:kitchen) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pets_allowed, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :pets_allowed, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:pets_allowed) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pool, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :pool, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:pool) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :shampoo, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :shampoo, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:shampoo) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :smoke_detector, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :smoke_detector, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:smoke_detector) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :smoking_allowed, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :smoking_allowed, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:smoking_allowed) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tv, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tv, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tv) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :washer, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :washer, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:washer) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :wireless_internet, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :wireless_internet, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:wireless_internet) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :place_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :place_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:place_id) %>
   </div>
 
-  <div class="field">
-    <%= f.label :internet %>
-    <%= f.text_field :internet %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                amenities_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :tv %>
-    <%= f.text_field :tv %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cable_tv %>
-    <%= f.text_field :cable_tv %>
-  </div>
-
-  <div class="field">
-    <%= f.label :internet %>
-    <%= f.text_field :internet %>
-  </div>
-
-  <div class="field">
-    <%= f.label :washer %>
-    <%= f.text_field :washer %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gym %>
-    <%= f.text_field :gym %>
-  </div>
-
-  <div class="field">
-    <%= f.label :handicap_accessible %>
-    <%= f.text_field :handicap_accessible %>
-  </div>
-
-  <div class="field">
-    <%= f.label :smoking_allowed %>
-    <%= f.text_field :smoking_allowed %>
-  </div>
-
-  <div class="field">
-    <%= f.label :indoor_fireplace %>
-    <%= f.text_field :indoor_fireplace %>
-  </div>
-
-  <div class="field">
-    <%= f.label :air_conditiong %>
-    <%= f.text_field :air_conditiong %>
-  </div>
-
-  <div class="field">
-    <%= f.label :heating %>
-    <%= f.text_field :heating %>
-  </div>
-
-  <div class="field">
-    <%= f.label :dryer %>
-    <%= f.text_field :dryer %>
-  </div>
-
-  <div class="field">
-    <%= f.label :place_id %>
-    <%= f.text_field :place_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

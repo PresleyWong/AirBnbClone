@@ -50,11 +50,10 @@ ActiveRecord::Schema.define(version: 20171110065954) do
     t.decimal  "total_price"
     t.date     "check_in_date"
     t.date     "check_out_date"
-    t.boolean  "confirmation",   default: false
     t.integer  "user_id"
     t.integer  "place_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["place_id"], name: "index_bookings_on_place_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end

@@ -1,74 +1,65 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Amenity -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Kitchen:</strong>
-  <%= @amenity.kitchen %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:air_conditiong) %>:</strong></dt>
+  <dd><%= @amenity.air_conditiong %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:cable_tv) %>:</strong></dt>
+  <dd><%= @amenity.cable_tv %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:carbon_monoxide_detector) %>:</strong></dt>
+  <dd><%= @amenity.carbon_monoxide_detector %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:dryer) %>:</strong></dt>
+  <dd><%= @amenity.dryer %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:elevator) %>:</strong></dt>
+  <dd><%= @amenity.elevator %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:essentials) %>:</strong></dt>
+  <dd><%= @amenity.essentials %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:family_friendly) %>:</strong></dt>
+  <dd><%= @amenity.family_friendly %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:first_aid_kit) %>:</strong></dt>
+  <dd><%= @amenity.first_aid_kit %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:gym) %>:</strong></dt>
+  <dd><%= @amenity.gym %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:handicap_accessible) %>:</strong></dt>
+  <dd><%= @amenity.handicap_accessible %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:heating) %>:</strong></dt>
+  <dd><%= @amenity.heating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hot_tub) %>:</strong></dt>
+  <dd><%= @amenity.hot_tub %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:indoor_fireplace) %>:</strong></dt>
+  <dd><%= @amenity.indoor_fireplace %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:internet) %>:</strong></dt>
+  <dd><%= @amenity.internet %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:kitchen) %>:</strong></dt>
+  <dd><%= @amenity.kitchen %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pets_allowed) %>:</strong></dt>
+  <dd><%= @amenity.pets_allowed %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:pool) %>:</strong></dt>
+  <dd><%= @amenity.pool %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:shampoo) %>:</strong></dt>
+  <dd><%= @amenity.shampoo %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:smoke_detector) %>:</strong></dt>
+  <dd><%= @amenity.smoke_detector %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:smoking_allowed) %>:</strong></dt>
+  <dd><%= @amenity.smoking_allowed %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tv) %>:</strong></dt>
+  <dd><%= @amenity.tv %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:washer) %>:</strong></dt>
+  <dd><%= @amenity.washer %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:wireless_internet) %>:</strong></dt>
+  <dd><%= @amenity.wireless_internet %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:place_id) %>:</strong></dt>
+  <dd><%= @amenity.place_id %></dd>
+</dl>
 
-<p>
-  <strong>Internet:</strong>
-  <%= @amenity.internet %>
-</p>
-
-<p>
-  <strong>Tv:</strong>
-  <%= @amenity.tv %>
-</p>
-
-<p>
-  <strong>Cable tv:</strong>
-  <%= @amenity.cable_tv %>
-</p>
-
-<p>
-  <strong>Internet:</strong>
-  <%= @amenity.internet %>
-</p>
-
-<p>
-  <strong>Washer:</strong>
-  <%= @amenity.washer %>
-</p>
-
-<p>
-  <strong>Gym:</strong>
-  <%= @amenity.gym %>
-</p>
-
-<p>
-  <strong>Handicap accessible:</strong>
-  <%= @amenity.handicap_accessible %>
-</p>
-
-<p>
-  <strong>Smoking allowed:</strong>
-  <%= @amenity.smoking_allowed %>
-</p>
-
-<p>
-  <strong>Indoor fireplace:</strong>
-  <%= @amenity.indoor_fireplace %>
-</p>
-
-<p>
-  <strong>Air conditiong:</strong>
-  <%= @amenity.air_conditiong %>
-</p>
-
-<p>
-  <strong>Heating:</strong>
-  <%= @amenity.heating %>
-</p>
-
-<p>
-  <strong>Dryer:</strong>
-  <%= @amenity.dryer %>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @amenity.place %>
-</p>
-
-<%= link_to 'Edit', edit_amenity_path(@amenity) %> |
-<%= link_to 'Back', amenities_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              amenities_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_amenity_path(@amenity), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              amenity_path(@amenity),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
