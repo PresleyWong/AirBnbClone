@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'transactions/new'
+
+  get 'transactions/index'
+
   namespace :admin do
     resources :users
     resources :amenities
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  resources :transactions, only: [:new, :create]
   resources :amenities
   resources :reviews
   resources :bookings

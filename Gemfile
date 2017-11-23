@@ -44,6 +44,7 @@ gem 'cloudinary'
 
 #frontend
 gem 'twitter-bootstrap-rails'
+gem 'gon'
 
 
 # utility 
@@ -52,15 +53,17 @@ gem 'delayed_job_web'
 gem 'daemons'
 
 gem 'friendly_id', '~> 5.1.0'
-gem "administrate"
+gem 'administrate'
 
-gem 'faker'
+
 gem 'braintree'
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'faker'
+  gem 'letter_opener'
 end
 
 group :development do
