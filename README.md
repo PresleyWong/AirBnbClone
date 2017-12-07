@@ -1,31 +1,8 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# XML - Schema
 
-Things you may want to cover:
+```javascript
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-* XML - Schema
-#
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
 <!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
@@ -262,3 +239,4 @@ Things you may want to cover:
 </key>
 </table>
 </sql>
+```
