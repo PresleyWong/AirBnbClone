@@ -1,8 +1,11 @@
-class TransactionsController < ApplicationController
+class PaymentsController < ApplicationController
   before_action :authenticate_user!
 
   def new
   	gon.client_token = generate_client_token
+  	
+    # @booking = Booking.find_by(secure_token: params[:secure_token])
+    
   end
 
   def create

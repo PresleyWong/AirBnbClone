@@ -1,0 +1,17 @@
+<div class="form-horizontal">
+  <h2 class="mbs">Payment</h2>
+  <%= form_tag payments_path do%>
+    <p>Please enter your payment details:</p>
+    <div id="dropin"></div>
+    <%=submit_tag "Continue", class: "btn btn-success button mt1" %>
+  <%end%>
+</div>
+
+<script>
+if(gon)
+{
+	braintree.setup(gon.client_token, "dropin", {
+	 container: "dropin"
+	});
+}
+</script>
