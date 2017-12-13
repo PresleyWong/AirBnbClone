@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reviews
-  has_many :bookings 
-  has_many :places, :through => :bookings
+  has_many :reservations 
+  has_many :places
+
+  mount_uploader :avatar, AvatarUploader
+
+  
 
 end

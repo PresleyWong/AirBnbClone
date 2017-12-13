@@ -1,0 +1,122 @@
+<%= form_tag search_path, method: :get do %>
+	<div class="row">
+		<div class="col-md-6">
+			<%= text_field_tag :search, params[:search], placeholder: "Where are you going?", class: "form-control", id:'geo-input' %>
+		</div>
+		<div class="col-md-2">
+			<%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+		</div>
+		<div class="col-md-2"><%= text_field_tag :end_date, params[:start_date], placeholder: "End Date", class: "form-control" %></div>
+		<div class="col-md-2">
+			<%= submit_tag "Search", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
+
+<br>
+
+<div class="text-center">
+	<h2>Just for the weekend</h2>
+	<p>Discover new, inspiring places close to home.</p>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-4 col-sm-12">
+		<a href="#">
+			<div class="discovery-card" style="background-image: url('assets/new-york.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>New York</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="#">
+			<div class="discovery-card" style="background-image: url('assets/london.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>London</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="#">
+			<div class="discovery-card" style="background-image: url('assets/berlin.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Berlin</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<br>
+
+<div class="text-center">
+	<h2>Explore the world</h2>
+	<p>See where people are travelling all around the world.</p>
+</div>
+
+<br>
+
+<div class="row">
+	<% @places.each do |p| %>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading preview">
+					<%= image_tag p.images[0].url(:medium) if p.images.length > 0 %>
+				</div>
+				<div class="panel-body">
+					<%= image_tag avatar_link(p.user), class: "img-circle avatar-small" %>&nbsp;
+					<%= link_to p.listing_name, p %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+
+<script>
+	$(function(){
+		$("#start_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected){
+				$("#end_date").datepicker("option", "minDate", selected);
+				$("#end_date").attr('disabled', false);
+			}
+		});
+
+		$("#end_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected){
+				$("#start_date").datepicker("option", "maxDate", selected);
+			}
+		});
+	});
+
+
+	var input = document.getElementById('geo-input');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+</script>
+
+
+<style>
+.va-container h2 {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+</style>

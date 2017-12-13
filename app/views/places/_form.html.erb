@@ -1,132 +1,130 @@
-<%= form_for @place, :html => { :class => "form-horizontal place" } do |f| %>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		Create your beautiful place
+	</div>
+	<div class="panel-body">
+		<div class="container">
+			<%= form_for @place, html: { multipart: true } do |f| %>
+				<div class="row">
+					<div class="col-md-6 select">
+						<div class="form-group">
+							<label>Home Type</label>
+							<%= f.select :home_type, [["Apartment", "Apartment"], ["Condominium", "Condominium"], ["House", "House"]], id: "home_type", prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
 
-  <% if @place.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@place.errors.count, "error") %> prohibited this place from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @place.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+					<div class="col-md-6 select">
+						<div class="form-group">
+							<label>Accommodate</label>
+							<%= f.select :accommodate, [["1",1], ["2",2], ["3",3], ["4",4], ["5",5], ["6+",6]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+				</div>
 
-  <div class="form-group">
-    <%= f.label :listing_title, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :listing_title, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:listing_title) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :listing_image, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :listing_image, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:listing_image) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :description, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:description) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :address, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :address, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:address) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :postcode, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :postcode, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:postcode) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :city, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :city, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:city) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :country, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :country, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:country) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :price, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :price, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:price) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :max_guest, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :max_guest, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:max_guest) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :num_rooms, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :num_rooms, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:num_rooms) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :num_beds, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :num_beds, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:num_beds) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :num_baths, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :num_baths, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:num_baths) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :latitude, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :latitude, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:latitude) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :longitude, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :longitude, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:longitude) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :owner_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :owner_id, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:owner_id) %>
-  </div>
+				<div class="row">
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label>Bedrooms</label>
+							<%= f.select :bed_room, [["1",1], ["2",2], ["3",3], ["4+",4]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
 
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                places_path, :class => 'btn btn-default' %>
-    </div>
-  </div>
+					<div class="col-md-4 select">
+						<div class="form-group">
+							<label>Bathrooms</label>
+							<%= f.select :bath_room, [["1",1], ["2",2], ["3",3], ["4+",4]], prompt: "Select...", class: "form-control" %>
+						</div>
+					</div>
+				</div>
 
-<% end %>
+				<div class="row">
+					<div class="form-group">
+						<label>Listing name</label>
+						<%= f.text_field :listing_name, placeholder: "Be clear and descriptive", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<label>Summary</label>
+						<%= f.text_area :summary, rows: 5, placeholder: "Tell about your house", class: "form-control" %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<label>Address</label>
+						<%= f.text_field :address, placeholder: "What is your address?", class: "form-control", id:'geo-input' %>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_tv %> TV
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_kitchen %> Kitchen
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_internet %> Internet
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<%= f.check_box :is_heating %> Heating
+						</div>
+						<div class="form-group">
+							<%= f.check_box :is_air %> Air Conditioning
+						</div>
+					</div>	
+				</div>	
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label>Nightly Price</label>
+							<div class="input-group">
+								<div class="input-group-addon">$</div>
+								<%= f.text_field :price, placeholder: "eg. $100", class: "form-group" %>
+							</div>	
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-4">
+					  <div class="form-group">
+					    <%= f.label "Upload Photos" %><br>
+					    <%= f.file_field :images, multiple: true %> 
+					    <% if f.object.images? %>
+					      <% f.object.images.each_with_index do |img| %>
+					        <%= image_tag img.thumb.url %>
+					        <%= f.check_box :remove_images %>Remove
+					      <% end %>
+					    <% end %>                
+					  </div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group">
+						<%= f.check_box :active %> Active
+					</div>
+				</div>
+
+				<div class="actions">
+					<%= f.submit "Save", class: "btn btn-primary" %>
+				</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	var input = document.getElementById('geo-input');
+	var autocomplete = new google.maps.places.Autocomplete(input);
+</script>

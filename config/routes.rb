@@ -1,28 +1,34 @@
 Rails.application.routes.draw do
-  get 'transactions/new'
 
-  get 'transactions/index'
+  root 'pages#home'
 
-  namespace :admin do
-    resources :users
-    resources :amenities
-    resources :bookings
-    resources :places
-    resources :reviews
+  devise_for :users, 
+         :path => '', 
+         :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
+         :controllers => {:registrations => 'registrations'}
+  
+  resources :users, only: [:show]
+  resources :places
 
-    root to: "users#index"
+  resources :places do
+    resources :reservations, only: [:create]
   end
 
-  resources :payments, only: [:new, :create]
-  resources :amenities
-  resources :reviews
-  resources :bookings
-  resources :places
-  devise_for :users
-  get 'home/index'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "home#index"
+  resources :places do
+    resources :reviews, only: [:create, :destroy]
+  end
+
+  get '/preload' => 'reservations#preload'
+  get '/preview' => 'reservations#preview'
+
+  get '/your_trips' => 'reservations#your_trips'
+  get '/your_reservations' => 'reservations#your_reservations'
+
+  post '/notify' => 'reservations#notify'
+  post '/your_trips' => 'reservations#your_trips'
+
+  get '/search' => 'pages#search'
 
 
 end

@@ -10,77 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110065954) do
+ActiveRecord::Schema.define(version: 20171110065001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "amenities", force: :cascade do |t|
-    t.boolean  "air_conditiong",           default: false
-    t.boolean  "cable_tv",                 default: false
-    t.boolean  "carbon_monoxide_detector", default: false
-    t.boolean  "dryer",                    default: false
-    t.boolean  "elevator",                 default: false
-    t.boolean  "essentials",               default: false
-    t.boolean  "family_friendly",          default: false
-    t.boolean  "first_aid_kit",            default: false
-    t.boolean  "gym",                      default: false
-    t.boolean  "handicap_accessible",      default: false
-    t.boolean  "heating",                  default: false
-    t.boolean  "hot_tub",                  default: false
-    t.boolean  "indoor_fireplace",         default: false
-    t.boolean  "internet",                 default: false
-    t.boolean  "kitchen",                  default: false
-    t.boolean  "pets_allowed",             default: false
-    t.boolean  "pool",                     default: false
-    t.boolean  "shampoo",                  default: false
-    t.boolean  "smoke_detector",           default: false
-    t.boolean  "smoking_allowed",          default: false
-    t.boolean  "tv",                       default: false
-    t.boolean  "washer",                   default: false
-    t.boolean  "wireless_internet",        default: false
-    t.integer  "place_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-    t.index ["place_id"], name: "index_amenities_on_place_id", using: :btree
-  end
-
-  create_table "bookings", force: :cascade do |t|
-    t.integer  "num_guest"
-    t.decimal  "total_price"
-    t.date     "check_in_date"
-    t.date     "check_out_date"
-    t.integer  "user_id"
-    t.integer  "place_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["place_id"], name: "index_bookings_on_place_id", using: :btree
-    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
-  end
-
   create_table "places", force: :cascade do |t|
-    t.string   "listing_title"
-    t.string   "listing_image"
-    t.string   "description"
+    t.string   "home_type"
+    t.integer  "accommodate"
+    t.integer  "bed_room"
+    t.integer  "bath_room"
+    t.string   "listing_name"
+    t.text     "summary"
     t.string   "address"
-    t.integer  "postcode"
-    t.string   "city"
-    t.string   "country"
-    t.decimal  "price"
-    t.integer  "max_guest"
-    t.integer  "num_rooms"
-    t.integer  "num_beds"
-    t.integer  "num_baths"
+    t.boolean  "is_tv"
+    t.boolean  "is_kitchen"
+    t.boolean  "is_air"
+    t.boolean  "is_heating"
+    t.boolean  "is_internet"
+    t.integer  "price"
+    t.boolean  "active"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "owner_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.json     "images"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_places_on_user_id", using: :btree
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "num_guest"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "price"
+    t.integer  "total"
+    t.boolean  "status"
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_reservations_on_place_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "rating",     default: 1, null: false
-    t.string   "comment"
+    t.integer  "star",       default: 1
+    t.text     "comment"
     t.integer  "user_id"
     t.integer  "place_id"
     t.datetime "created_at",             null: false
@@ -109,9 +85,9 @@ ActiveRecord::Schema.define(version: 20171110065954) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "amenities", "places"
-  add_foreign_key "bookings", "places"
-  add_foreign_key "bookings", "users"
+  add_foreign_key "places", "users"
+  add_foreign_key "reservations", "places"
+  add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "places"
   add_foreign_key "reviews", "users"
 end

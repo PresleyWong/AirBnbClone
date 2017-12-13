@@ -1,22 +1,26 @@
 class CreatePlaces < ActiveRecord::Migration[5.0]
   def change
     create_table :places do |t|
-      t.string :listing_title
-      t.string :listing_image
-      t.string :description
-      t.string :address
-      t.integer :postcode
-      t.string :city
-      t.string :country
-      t.decimal  :price
-      t.integer :max_guest
-      t.integer :num_rooms
-      t.integer :num_beds
-      t.integer :num_baths
-      t.float  :latitude
-      t.float  :longitude
-      t.integer :owner_id  
 
+      t.string   :home_type
+      t.integer  :accommodate
+      t.integer  :bed_room
+      t.integer  :bath_room
+      t.string   :listing_name
+      t.text     :summary
+      t.string   :address
+      t.boolean  :is_tv
+      t.boolean  :is_kitchen
+      t.boolean  :is_air
+      t.boolean  :is_heating
+      t.boolean  :is_internet
+      t.integer  :price
+      t.boolean  :active
+      t.float    :latitude
+      t.float    :longitude
+      t.json     :images
+
+      t.references :user, foreign_key: true
       t.timestamps
     end    
   end

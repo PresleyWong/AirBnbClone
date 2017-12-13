@@ -38,6 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 gem 'devise'
 
+# gem 'sdoc'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'cloudinary'
@@ -46,17 +47,21 @@ gem 'cloudinary'
 #frontend
 gem 'twitter-bootstrap-rails'
 gem 'gon'
+gem 'bootstrap-sass'
+gem 'toastr-rails'
+gem 'jquery-ui-rails'
+gem 'geocoder'
 
 
 # utility 
+gem 'ransack'
+
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'daemons'
 
 gem 'friendly_id', '~> 5.1.0'
 gem 'administrate'
-
-
 gem 'braintree'
 
 

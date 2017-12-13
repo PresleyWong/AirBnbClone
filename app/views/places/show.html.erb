@@ -1,49 +1,207 @@
-<%- model_class = Place -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="panel panel-default">
+	<div class="panel-body">
+
+		<!-- image -->
+		<div class="row">
+			<div class="col-md-12">
+				<%= image_tag @photos[0].url(), class: "image-responsive" if @photos.length > 0 %>
+			</div>
+		</div>
+		<br>
+
+		<!-- Main Info -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-3 text-center">
+						<%= image_tag avatar_link(@place.user), class: "img-circle avatar-large" %><br><br>
+						<%= "#{@place.user.first_name}"+" "+"#{@place.user.last_name}" %>
+					</div>
+					<div class="col-md-9">
+						<h4><%= @place.listing_name %></h4>
+						<%= @place.address %>
+
+						<div class="row text-center row-space-1">
+							<div class="col-sm-3">
+								<i class="fa fa-home fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-users fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-bed fa-2x"></i>
+							</div>
+							<div class="col-sm-3">
+								<i class="fa fa-ship fa-2x"></i>
+							</div>
+						</div>
+
+						<div class="row text-center">
+							<div class="col-sm-3">
+								<%= @place.home_type.titleize %>
+							</div>
+							<div class="col-sm-3">
+								<%= pluralize(@place.accommodate, 'guest'.titleize) %>
+							</div>
+							<div class="col-sm-3">
+								<%= pluralize(@place.bed_room, 'bedroom'.titleize) %>
+							</div>
+							<div class="col-sm-3">
+								<%= pluralize(@place.bath_room, 'bathroom'.titleize) %>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<!-- Reservation Form -->
+				<%= render 'reservations/form' %>
+			</div>
+		</div>
+
+		<!-- About -->
+		<div class="row">
+			<div class="col-md-12">
+				<h2>About This Listing</h2>
+				<p><%= @place.summary %></p>
+			</div>
+		</div>
+
+		<!-- Amenities -->
+		<div class="row">
+			<div class="col-md-2">
+				<p>Amenities</p>
+			</div>
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="amenities">
+							<li class="<%= 'text-line-through' if !@place.is_tv %>">TV</li>
+							<li class="<%= 'text-line-through' if !@place.is_kitchen %>">Kitchen</li>
+							<li class="<%= 'text-line-through' if !@place.is_internet %>">Internet</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="amenities">
+							<li class="<%= 'text-line-through' if !@place.is_heating %>">Heating</li>
+							<li class="<%= 'text-line-through' if !@place.is_air %>">Airconditioning</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Carousel -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				  <!-- Indicators -->
+				  <% if @photos %>
+					  <ol class="carousel-indicators">
+					  	<% @photos.each_with_index do |photo, index| %>
+					    	<li data-target="#myCarousel" data-slide-to="<%= index %>"></li>
+					    <% end %>
+					  </ol>
+					<% end %>
+
+				  <!-- Wrapper for slides -->
+				  <div class="carousel-inner">
+				  	<% if @photos %>
+				  		<% @photos.each_with_index do |photo, index| %>
+						    <div class="item <%= 'active' if index == 0 %>">
+						      <%= image_tag photo.url %>
+						    </div>
+					    <% end %>
+				    <% end %>
+				  </div>
+
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<hr>
+
+		<!-- Reviews -->
+
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Reviews <span id="average_rating"></span> (<%= @reviews.count %>)</h3>
+			</div>
+			<div class="container">
+				<div>
+					<%= render 'reviews/form' if @booked && !@hasReview %>
+				</div>
+				<div>
+					<%= render 'reviews/list' %>
+				</div>
+			</div>
+		</div>
+
+		<!-- Google Map -->
+		<div class="row">
+			<div class="col-md-12">
+				<div id="map"></div>
+				<style>
+				 #map {
+				   width: 100%;
+				   height: 400px;
+				 }
+				</style>
+				<script>
+		      function initMap() {
+		        var uluru = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+		        var map = new google.maps.Map(document.getElementById('map'), {
+		          zoom: 14,
+		          center: uluru
+		        });
+		        var marker = new google.maps.Marker({
+		          position: {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>},
+		          map: map,
+		          title: "AirAlien"
+		        });
+		      }
+		    </script>
+		    <script async defer
+    		src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GEOCODING_API_ID'] %>&callback=initMap">
+    		</script>
+			</div>
+		</div>
+
+
+		<h3>Near by</h3>
+		<div class="row">
+			<% for p in @place.nearbys(10) %>
+				<div class="col-md-4">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<%= image_tag p.photos[0].image.url(:medium) %>
+						</div>
+						<div class="panel-body">
+							<%= link_to p.listing_name, p %><br>
+							(<%= p.distance.round(2) %> miles away)
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:listing_title) %>:</strong></dt>
-  <dd><%= @place.listing_title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:listing_image) %>:</strong></dt>
-  <dd><%= @place.listing_image %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @place.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @place.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:postcode) %>:</strong></dt>
-  <dd><%= @place.postcode %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @place.city %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
-  <dd><%= @place.country %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
-  <dd><%= @place.price %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:max_guest) %>:</strong></dt>
-  <dd><%= @place.max_guest %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:num_rooms) %>:</strong></dt>
-  <dd><%= @place.num_rooms %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:num_beds) %>:</strong></dt>
-  <dd><%= @place.num_beds %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:num_baths) %>:</strong></dt>
-  <dd><%= @place.num_baths %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:latitude) %>:</strong></dt>
-  <dd><%= @place.latitude %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:longitude) %>:</strong></dt>
-  <dd><%= @place.longitude %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
-  <dd><%= @place.owner_id %></dd>
-</dl>
-
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              places_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_place_path(@place), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              place_path(@place),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-
-<%=link_to "Checkout", new_payment_path, class: "btn btn-primary" %>
+<script>
+	$('#average_rating').raty({
+		path: '/assets',
+		readOnly: true,
+		score: <%= @place.average_rating %>
+	});
+</script>
