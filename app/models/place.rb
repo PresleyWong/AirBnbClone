@@ -19,7 +19,7 @@ class Place < ApplicationRecord
   
 
    def average_rating
-    reviews.count == 0 ? 0 : reviews.average(:star).round(2)
+    reviews.count > 0 ? reviews.average(:star).round(2) : 0
   end
 
 end

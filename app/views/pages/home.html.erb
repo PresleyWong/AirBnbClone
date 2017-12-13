@@ -75,7 +75,9 @@
 		<div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading preview">
+					<a href=<%=place_path(p)%> >
 					<%= image_tag p.images[0].url(:medium) if p.images.length > 0 %>
+					</a>
 				</div>
 				<div class="panel-body">
 					<%= image_tag avatar_link(p.user), class: "img-circle avatar-small" %>&nbsp;

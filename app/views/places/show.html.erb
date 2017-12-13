@@ -4,7 +4,7 @@
 		<!-- image -->
 		<div class="row">
 			<div class="col-md-12">
-				<%= image_tag @photos[0].url(), class: "image-responsive" if @photos.length > 0 %>
+				<%= image_tag @photos[0].url(), class: "img-responsive" if @photos.length > 0 %>
 			</div>
 		</div>
 		<br>
@@ -77,15 +77,15 @@
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="amenities">
-							<li class="<%= 'text-line-through' if !@place.is_tv %>">TV</li>
-							<li class="<%= 'text-line-through' if !@place.is_kitchen %>">Kitchen</li>
-							<li class="<%= 'text-line-through' if !@place.is_internet %>">Internet</li>
+							<li class="<%= 'text-line-through' if !@place.is_tv %>"><i class="fa fa-television" aria-hidden="true"></i> TV</li>
+							<li class="<%= 'text-line-through' if !@place.is_kitchen %>"><i class="fa fa-cutlery" aria-hidden="true"></i> Kitchen</li>
+							<li class="<%= 'text-line-through' if !@place.is_internet %>"><i class="fa fa-wifi" aria-hidden="true"></i> Internet</li>
 						</ul>
 					</div>
 					<div class="col-md-6">
 						<ul class="amenities">
-							<li class="<%= 'text-line-through' if !@place.is_heating %>">Heating</li>
-							<li class="<%= 'text-line-through' if !@place.is_air %>">Airconditioning</li>
+							<li class="<%= 'text-line-through' if !@place.is_heating %>"><i class="fa fa-fire" aria-hidden="true"></i> Heating</li>
+							<li class="<%= 'text-line-through' if !@place.is_air %>"><i class="fa fa-asterisk" aria-hidden="true"></i> Airconditioning</li>
 						</ul>
 					</div>
 				</div>
@@ -148,6 +148,7 @@
 			</div>
 		</div>
 
+		<br>
 		<!-- Google Map -->
 		<div class="row">
 			<div class="col-md-12">
@@ -168,7 +169,7 @@
 		        var marker = new google.maps.Marker({
 		          position: {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>},
 		          map: map,
-		          title: "AirAlien"
+		          title: "Cloudbnb"
 		        });
 		      }
 		    </script>
@@ -178,23 +179,6 @@
 			</div>
 		</div>
 
-
-		<h3>Near by</h3>
-		<div class="row">
-			<% for p in @place.nearbys(10) %>
-				<div class="col-md-4">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<%= image_tag p.photos[0].image.url(:medium) %>
-						</div>
-						<div class="panel-body">
-							<%= link_to p.listing_name, p %><br>
-							(<%= p.distance.round(2) %> miles away)
-						</div>
-					</div>
-				</div>
-			<% end %>
-		</div>
 	</div>
 </div>
 

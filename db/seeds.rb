@@ -17,7 +17,7 @@ User.create(
 
 
 10.times do
-	avatar_img = "/app/assets/images/people_"+ rand(1..8).to_s + ".png"
+	avatar_img = "/app/assets/images/people_"+ rand(1..10).to_s + ".png"
 	user = User.create(
 		first_name: Faker::Name.first_name,
 		last_name: Faker::Name.last_name,
@@ -28,12 +28,12 @@ User.create(
 end	
 
 photos = []
-8.times.each { |x|  photos << File.open(File.join(Rails.root, "/app/assets/images/place_" + "#{x+1}" + ".png")) }
+15.times.each { |x|  photos << File.open(File.join(Rails.root, "/app/assets/images/place_" + "#{x}" + ".jpg")) }
 
 
-12.times do
+15.times do
 	place = Place.create(
-		listing_name: Faker::Lorem.paragraph(1),	
+		listing_name: Faker::Lorem.words(4).map(&:capitalize).join(' '),	
 		summary: Faker::Lorem.paragraph(2),
 		address: Faker::Address.street_address,
 		price: rand(200..1000),
@@ -52,6 +52,8 @@ photos = []
 		user_id: User.all.sample.id,	
 		images: photos.sample(3) 
 	)	
+
+	byebug if place.errors.count > 0
 end
 
 

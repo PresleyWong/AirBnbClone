@@ -10,9 +10,9 @@
       </div>
       <div class="col-md-11">
         <div>
-          <strong><%= r.user.first_name %> <div id="stars_<%= r.id %>"></div></strong>
+          <strong><%= "#{r.user.first_name}"+" "+"#{r.user.last_name}"%> <div id="stars_<%= r.id %>"></div></strong>
           <span class="pull-right">
-            <%= link_to "Remove My Review", [@room, r], method: :delete, data: { confirm: "Are you sure?"} if current_user && current_user == r.user %>
+            <%= link_to "Remove My Review", [@place, r], method: :delete, data: { confirm: "Are you sure?"} if current_user && current_user == r.user %>
           </span>
         </div>
         <div><%= r.created_at.strftime("%v") %></div>
@@ -31,3 +31,4 @@
   <% end %>
 <% end %>
 
+ 

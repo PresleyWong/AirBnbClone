@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-  	@places = Place.limit(6)
+  	@places = Place.all.sample(6)
   end
 
   def search
