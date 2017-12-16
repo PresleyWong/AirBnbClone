@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 20171110065001) do
     t.datetime "end_date"
     t.integer  "price"
     t.integer  "total"
-    t.boolean  "status"
+    t.boolean  "status",     default: false
     t.integer  "user_id"
     t.integer  "place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["place_id"], name: "index_reservations_on_place_id", using: :btree
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end

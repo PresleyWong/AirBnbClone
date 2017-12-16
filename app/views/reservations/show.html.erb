@@ -1,0 +1,19 @@
+<h3>Your Reservation</h3>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <p><strong>Listing name:</strong> <%= link_to @reservation.place.listing_name, place_path(@reservation.place) %></p>
+    <p><strong>No.Guest:</strong> <%= @reservation.num_guest%> </p>
+    <p><strong>Location:</strong> <%= @reservation.place.address %> </p>
+    <p><strong>Check-in Date:</strong> <%= @reservation.start_date %></p>
+    <p><strong>Checkout Date:</strong> <%= @reservation.end_date %></p>
+    <p><strong>Total Price:</strong> $ <%= @reservation.total %></p> 
+    <p><strong>Payment Status:</strong><%= @reservation.status ? "Paid" : "Pending" %></p>
+    
+    <br>
+    <byebug>
+    <% unless @reservation.status %>    
+       <%= link_to 'Pay Now' , new_payment_path(@reservation), class: "btn btn-success"  %>
+    <% end %>
+  </li>
+</ul>

@@ -19,27 +19,20 @@ class ReservationsController < ApplicationController
     render json: output
   end
 
+  def show
+    @reservation = Reservation.find(params[:id])
+
+  end
+
   def create
     @reservation = current_user.reservations.create(reservation_params)
 
     if @reservation
-
-      # send request to Paypal
-      values = {
-        business: 'info-facilitator@anthonycandaele.com',
-        cmd: '_xclick',
-        upload: 1,
-        notify_url: 'http://bb7200e1.ngrok.io/notify',
-        amount: @reservation.total,
-        item_name: @reservation.place.listing_name,
-        item_number: @reservation.id,
-        quantity: '1',
-        return: 'http://bb7200e1.ngrok.io/your_trips'
-      }
-
-      redirect_to "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+      flash[:notice] = "Reservation successfully created"
+      redirect_to place_reservation_path(params[:place_id], @reservation)
     else
-      redirect_to @reservation.place, alert: "Oops something went wrong ..."
+      flash[:alert] = "Oops something went wrong ..."
+      redirect_to @reservation.place
     end
   end
 
@@ -68,6 +61,7 @@ class ReservationsController < ApplicationController
 
   def your_reservations
     @places = current_user.places
+    @reservations = current_user.reservations
   end
 
   private

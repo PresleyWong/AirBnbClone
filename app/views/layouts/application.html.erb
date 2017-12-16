@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "AirBnb" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Cloudbnb" %></title>
+    <%= include_gon %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -37,7 +38,10 @@
     <![endif]-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.9/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.0.9/sweetalert2.min.css">
 
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
     <!-- geocoder -->
     <script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV["GEOCODING_API_ID"]%>&libraries=places"></script>
     
@@ -45,11 +49,11 @@
   <body>
 
     <%= render 'shared/navbar' %>
+    <%= render 'shared/message' %>
 
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <%= bootstrap_flash %>
           <%= yield %>
         </div>
       </div><!--/row-->

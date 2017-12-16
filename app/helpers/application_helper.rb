@@ -1,5 +1,6 @@
 module ApplicationHelper
 	def avatar_link(user)
+
 		gravatar_id = Digest::MD5::hexdigest(user.email).downcase
 		if user.avatar
 			user.avatar

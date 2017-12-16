@@ -25,30 +25,26 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
+    @review = current_user.reviews.new(review_params)
 
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.save        
+      flash[:notice] = "Review was successfully created."
+      redirect_to place_path(@review.place)
+    else
+      flash[:alert] = "Oops something went wrong ..." 
     end
+
   end
 
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
-      else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.update(review_params)
+      flash[:notice] = "Review was successfully updated."
+      redirect_to place_path(@review.place)
+    else
+      flash[:alert] = "Oops something went wrong ..."
+      render :edit 
     end
   end
 
@@ -56,10 +52,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "Review was successfully destroyed."
+    redirect_to place_path(@review.place)
   end
 
   private
@@ -70,6 +64,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:rating, :comment, :user_id, :place_id)
+      params.require(:review).permit(:star, :comment, :user_id, :place_id)
     end
 end

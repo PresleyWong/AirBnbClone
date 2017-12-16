@@ -48,7 +48,6 @@ gem 'cloudinary'
 gem 'twitter-bootstrap-rails'
 gem 'gon'
 gem 'bootstrap-sass'
-gem 'toastr-rails'
 gem 'jquery-ui-rails'
 gem 'geocoder'
 

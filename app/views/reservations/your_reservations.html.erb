@@ -13,8 +13,8 @@
 			</div>
 			<div class="panel-body">
 
-				<% @places.each do |p| %>
-					<% p.reservations.each do |reservation| %>
+				
+					<% @reservations.each do |reservation| %>
 						<% if reservation.status %>
 							<div class="row">
 								<div class="col-md-2">
@@ -22,7 +22,7 @@
 								</div>
 								<div class="col-md-6">
 									<%= link_to place_path(reservation.place) do %>
-										<%= image_tag reservation.place.photos[0].image.url(:thumb) %>
+										<%= image_tag reservation.place.images[0].url(:medium) %>
 										<% end %>
 								</div>
 								<div class="col-md-2">
@@ -37,7 +37,7 @@
 							<hr>
 						<%end %>
 					<% end %>
-				<% end %>
+			
 
 				
 

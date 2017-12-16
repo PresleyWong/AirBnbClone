@@ -35,7 +35,7 @@ photos = []
 	place = Place.create(
 		listing_name: Faker::Lorem.words(4).map(&:capitalize).join(' '),	
 		summary: Faker::Lorem.paragraph(2),
-		address: Faker::Address.street_address,
+		address: Faker::Address.street_address + "," + Faker::Address.secondary_address + "," + Faker::Address.zip_code + "." ,
 		price: rand(200..1000),
 		home_type: ["House", "Apartment", "Condominium"].sample,
 		accommodate: rand(2..6),

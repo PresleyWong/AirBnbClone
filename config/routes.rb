@@ -7,11 +7,12 @@ Rails.application.routes.draw do
          :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
          :controllers => {:registrations => 'registrations'}
   
+  resources :payments, only: [:new, :create]
   resources :users, only: [:show]
   resources :places
 
   resources :places do
-    resources :reservations, only: [:create]
+    resources :reservations, only: [:create, :show, :edit]
   end
 
 

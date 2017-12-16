@@ -21,8 +21,10 @@ class PlacesController < ApplicationController
     @place = current_user.places.build(place_params)
 
     if @place.save
-      redirect_to edit_place_path(@place), notice: "Saved..."
+      flash[:notice] = "Host is created successfully."
+      redirect_to edit_place_path(@place)
     else
+      flash[:alert] = "Error creating host."
       render :new
     end
   end
@@ -31,7 +33,8 @@ class PlacesController < ApplicationController
     if current_user.id == @place.user.id
       @photos = @place.images
     else
-      redirect_to root_path, notice: "You don't have permission."
+      flash[:alert] = "You don't have permission."
+      redirect_to root_path
     end
   end
 
@@ -42,9 +45,10 @@ class PlacesController < ApplicationController
           @place.images.create(image: image)
         end
       end
-
-      redirect_to edit_place_path(@place), notice: "Updated..."
+      flash[:notice] = "Updated successfully."
+      redirect_to edit_place_path(@place)
     else
+      flash[:alert] = "Error."
       render :edit
     end
   end

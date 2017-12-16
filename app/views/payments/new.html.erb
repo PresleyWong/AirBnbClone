@@ -1,11 +1,20 @@
-<div class="form-horizontal">
-  <h2 class="mbs">Payment</h2>
-  <%= form_tag payments_path do%>
-    <p>Please enter your payment details:</p>
-    <div id="dropin"></div>
-    <%=submit_tag "Continue", class: "btn btn-success button mt1" %>
-  <%end%>
+<%= form_tag payments_path do%>
+
+
+<div class="field">
+<div id="dropin"></div>
 </div>
+
+<input type="hidden" name="total" value= <%=@reservation.total%> >
+<input type="hidden" name="reservation" value= <%=@reservation.id%> >
+
+
+<br>
+<div class="actions">
+<%=submit_tag "Proceed to pay amount of $#{@reservation.total}", class: "btn btn-primary" %>
+</div>
+<%end%>
+
 
 <script>
 if(gon)

@@ -3,18 +3,20 @@ class PaymentsController < ApplicationController
 
   def new
   	gon.client_token = generate_client_token
-  	
-    # @booking = Booking.find_by(secure_token: params[:secure_token])
-    
+  	@reservation = Reservation.find(params[:id])  
   end
 
   def create
     @result = Braintree::Transaction.sale(
-              amount: 10,
-              payment_method_nonce: params[:payment_method_nonce])
+              amount: params[:total],
+              payment_method_nonce: 'fake-valid-nonce')
     if @result.success?
-      # current_user.purchase_cart_movies!
-      redirect_to root_url, notice: "Congraulations! Your transaction has been successfully!"
+
+      r = Reservation.find(params[:reservation])
+      r.update(status: true)
+
+      flash[:notice] = "Congraulations! Your transaction has been successfully!"
+      redirect_to root_url
     else
       flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
       gon.client_token = generate_client_token

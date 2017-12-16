@@ -1,0 +1,12 @@
+<% unless flash.empty? %>
+  <script type="text/javascript">
+  	<% flash.each do |f| %>
+
+  		<% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+  		<% type = f[0].to_s.gsub('notice', 'success') if f[1].include? 'success'%>
+
+  		swal("<%= type %>", "<%= f[1] %>", "<%= type %>");
+
+  	<% end %>
+  </script>
+<% end %>

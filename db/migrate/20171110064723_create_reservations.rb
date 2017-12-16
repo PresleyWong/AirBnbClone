@@ -6,7 +6,7 @@ class CreateReservations < ActiveRecord::Migration[5.0]
       t.datetime :end_date
       t.integer  :price
       t.integer  :total
-      t.boolean :status  
+      t.boolean :status, default: false  
       t.references :user, index: true, foreign_key: true
       t.references :place, index: true, foreign_key: true
 
