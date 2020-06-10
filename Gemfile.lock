@@ -110,7 +110,7 @@ GEM
       thor (~> 0.14)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    geocoder (1.4.5)
+    geocoder (1.6.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gon (6.2.0)
@@ -261,8 +261,6 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    toastr-rails (1.0.3)
-      railties (>= 3.1.0)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -322,7 +320,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  toastr-rails
   turbolinks (~> 5)
   twitter-bootstrap-rails
   tzinfo-data
