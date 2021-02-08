@@ -39,7 +39,7 @@ gem 'figaro'
 gem 'devise'
 
 # gem 'sdoc'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'mini_magick'
 gem 'cloudinary'
 
